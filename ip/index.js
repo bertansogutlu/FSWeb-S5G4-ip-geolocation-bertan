@@ -164,6 +164,9 @@ async function getUserDif() {
 		card.insertAdjacentHTML("beforeend", userCard);
 	} catch (error) {
 		console.log(error);
+		const errorMessage = errorCreater(error);
+		const card = document.querySelector(".cards");
+		card.insertAdjacentHTML("beforeend", errorMessage);
 	}
 }
 
@@ -177,6 +180,7 @@ async function getUserDifCatch() {
 		const card = document.querySelector(".cards");
 		card.insertAdjacentHTML("beforeend", userCard);
 	} catch (error) {
+		console.log(error)
 		const errorMessage = errorCreater(error);
 		const card = document.querySelector(".cards");
 		card.insertAdjacentHTML("beforeend", errorMessage);
