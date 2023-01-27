@@ -87,7 +87,7 @@ function cardCreater(obj) {
 		<p>Para birimi: ${obj.data["parabirimi"]}</p>
 		<p>ISP: ${obj.data["isp"]}</p>
 	</div>
-	</div>`;
+	</div>`
 }
 
 function errorCreater(obj) {
@@ -97,7 +97,7 @@ function errorCreater(obj) {
 		<h3 class="ip">${obj.code}</h3>
 		<p>${obj.message}</p>
 	</div>
-	</div>`;
+	</div>`
 }
 
 
@@ -127,7 +127,8 @@ async function getUserCatch() {
 		const card = document.querySelector(".cards");
 		card.insertAdjacentHTML("beforeend", userCard);
 	} catch (error) {
-		console.log(error)
+		console.log("getUserCatch");
+		console.log(error);
 		const errorMessage = errorCreater(error);
 		const card = document.querySelector(".cards");
 		card.insertAdjacentHTML("beforeend", errorMessage);
@@ -150,7 +151,7 @@ function cardCreater2(obj) {
 		<p>Para birimi: ${"TL"}</p>
 		<p>ISP: ${obj.data.org}</p>
 	</div>
-	</div>`;
+	</div>`
 }
 
 
@@ -180,7 +181,8 @@ async function getUserDifCatch() {
 		const card = document.querySelector(".cards");
 		card.insertAdjacentHTML("beforeend", userCard);
 	} catch (error) {
-		console.log(error)
+		console.log("getUserDifCatch");
+		console.log(error);
 		const errorMessage = errorCreater(error);
 		const card = document.querySelector(".cards");
 		card.insertAdjacentHTML("beforeend", errorMessage);
