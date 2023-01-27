@@ -75,15 +75,15 @@ async function ipAdresimiAl(){
 
 function cardCreater(obj) {
 	return `<div class="card">
-	<img src=${obj["ülkebayrağı"]} />
+	<img src=${obj.data["ülkebayrağı"]} />
 	<div class="card-info">
-		<h3 class="ip">${obj["sorgu"]}</h3>
-		<p class="ulke">${obj["ülkeKodu"]}</p>
-		<p>Enlem: ${obj["enlem"]} Boylam: ${obj["boylam"]}</p>
-		<p>Şehir: ${obj["bölgeAdı"]}</p>
-		<p>Saat dilimi: ${obj["saatdilimi"]}</p>
-		<p>Para birimi: ${obj["parabirimi"]}</p>
-		<p>ISP: ${obj["isp"]}</p>
+		<h3 class="ip">${obj.data["sorgu"]}</h3>
+		<p class="ulke">${obj.data["ülkeKodu"]}</p>
+		<p>Enlem: ${obj.data["enlem"]} Boylam: ${obj.data["boylam"]}</p>
+		<p>Şehir: ${obj.data["bölgeAdı"]}</p>
+		<p>Saat dilimi: ${obj.data["saatdilimi"]}</p>
+		<p>Para birimi: ${obj.data["parabirimi"]}</p>
+		<p>ISP: ${obj.data["isp"]}</p>
 	</div>
 	</div>`;
 	}
