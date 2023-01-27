@@ -91,7 +91,6 @@ function cardCreater(obj) {
 async function getUser() {
 	try {
 		const response = await axios.get('https://apis.ergineer.com/ipgeoapi/81.214.106.54');
-		console.log(response);
 		const userCard = cardCreater(response);
 		const card= document.querySelector(".cards");
 		card.insertAdjacentHTML("beforeend", userCard);
