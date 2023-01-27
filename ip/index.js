@@ -73,6 +73,8 @@ async function ipAdresimiAl() {
 
 //https://apis.ergineer.com/ipgeoapi/81.214.106.54
 
+
+
 function cardCreater(obj) {
 	return `<div class="card">
 	<img src=${obj.data["ülkebayrağı"]} />
@@ -88,6 +90,18 @@ function cardCreater(obj) {
 	</div>`;
 }
 
+function errorCreater(obj) {
+	return `<div class="card">
+	<img src=${'https://miro.medium.com/max/1400/1*52_FzWNt0rWi6X-nUF0OBw.webp'} />
+	<div class="card-info">
+		<h3 class="ip">${obj.code}</h3>
+		<p>${obj.message}</p>
+	</div>
+	</div>`;
+}
+
+
+
 async function getUser() {
 	try {
 		await ipAdresimiAl();
@@ -96,12 +110,31 @@ async function getUser() {
 		const card = document.querySelector(".cards");
 		card.insertAdjacentHTML("beforeend", userCard);
 	} catch (error) {
-		console.error(error);
+		console.log(error)
+		const errorMessage = errorCreater(error);
+		const card = document.querySelector(".cards");
+		card.insertAdjacentHTML("beforeend", errorMessage);
 	}
 }
 
-getUser()
+getUser();
 
+async function getUserCatch() {
+	try {
+		await ipAdresimiAl();
+		const response = await axios.get('https://apis.erginr.com/ipgeoapi/');
+		const userCard = cardCreater(response);
+		const card = document.querySelector(".cards");
+		card.insertAdjacentHTML("beforeend", userCard);
+	} catch (error) {
+		console.log(error)
+		const errorMessage = errorCreater(error);
+		const card = document.querySelector(".cards");
+		card.insertAdjacentHTML("beforeend", errorMessage);
+	}
+}
+
+getUserCatch();
 
 
 
@@ -120,7 +153,9 @@ function cardCreater2(obj) {
 	</div>`;
 }
 
-async function getUser2() {
+
+
+async function getUserDif() {
 	try {
 		await ipAdresimiAl();
 		const response = await axios.get(`https://ipinfo.io/${benimIP}?token=1c9664f8f86f79`);
@@ -132,29 +167,21 @@ async function getUser2() {
 	}
 }
 
-getUser2()
+getUserDif();
 
-function errorCreate(obj) {
-	return `<div class="card">
-	<img src=${'https://miro.medium.com/max/1400/1*52_FzWNt0rWi6X-nUF0OBw.webp'} />
-	<div class="card-info">
-		<h3 class="ip">${obj.code}</h3>
-		<p>${obj.message}</p>
-	</div>
-	</div>`;
-}
 
-async function getUser3() {
+async function getUserDifCatch() {
 	try {
 		const response = await axios.get('https://ipinfo.io/');
 		const userCard = cardCreater2(response);
 		const card = document.querySelector(".cards");
 		card.insertAdjacentHTML("beforeend", userCard);
 	} catch (error) {
-		const errorMessage = errorCreate(error);
+		const errorMessage = errorCreater(error);
 		const card = document.querySelector(".cards");
 		card.insertAdjacentHTML("beforeend", errorMessage);
 	}
 }
 
-getUser3()
+getUserDifCatch();
+
