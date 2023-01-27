@@ -7,25 +7,25 @@ var benimIP;
 // licensed to Ergineer 2022
 require("babel-core/register");
 require("babel-polyfill");
-async function ipAdresimiAl(){
+async function ipAdresimiAl() {
 	await axios({
 		method: 'get',
 		url: 'https://apis.ergineer.com/ipadresim',
 	})
-	.then(function (response) {
-		return response.data
-	})
-	.then(function (a) {
-		benimIP=a
-	});
-}				
+		.then(function (response) {
+			return response.data
+		})
+		.then(function (a) {
+			benimIP = a
+		});
+}
 // ------------ değiştirmeyin --------------
 
 
 /*
 	ADIM 1: axios kullanarak, aşağıdaki URL'ye GET sorgusu atacağız
-    (tag içindeki yere kendi ipnizi yazarak URL'yi oluşturun):
-    https://apis.ergineer.com/ipgeoapi/<ipniz>
+	(tag içindeki yere kendi ipnizi yazarak URL'yi oluşturun):
+	https://apis.ergineer.com/ipgeoapi/<ipniz>
 	
 	NOT: Bilgisayarın IP adresini öğrenmek için: https://apis.ergineer.com/ipadresim 
 	ADIM 5'e gelene kadar fonksiyonunuzu test etmek için ip nizi URL'ye manuel olarak ekleyebilirsiniz.
@@ -38,7 +38,7 @@ async function ipAdresimiAl(){
 */
 /*
 	ADIM 3: Argümanı sadece 1 nesne kabül eden bir fonksiyon oluşturun.
-    DOM metotlarını ve özelliklerini kullanarak, şunları gerçekleştirin:
+	DOM metotlarını ve özelliklerini kullanarak, şunları gerçekleştirin:
 	
 	<div class="card">
 	<img src={ülke bayrağı url} />
@@ -51,7 +51,7 @@ async function ipAdresimiAl(){
 		<p>Para birimi: {para birimi}</p>
 		<p>ISP: {isp}</p>
 	</div>
-    </div>
+	</div>
 */
 
 /*
@@ -86,19 +86,75 @@ function cardCreater(obj) {
 		<p>ISP: ${obj.data["isp"]}</p>
 	</div>
 	</div>`;
-	}
+}
 
 async function getUser() {
 	try {
 		const response = await axios.get('https://apis.ergineer.com/ipgeoapi/81.214.106.54');
 		const userCard = cardCreater(response);
-		const card= document.querySelector(".cards");
+		const card = document.querySelector(".cards");
 		card.insertAdjacentHTML("beforeend", userCard);
 	} catch (error) {
 		console.error(error);
 	}
-  }
+}
 
-  getUser()
-	
+getUser()
 
+
+
+
+function cardCreater2(obj) {
+	return `<div class="card">
+	<img src=${'https://www.odamax.com/omag/wp-content/uploads/2022/05/antalya-kaleici-800x582.jpg'} />
+	<div class="card-info">
+		<h3 class="ip">${obj.data.ip}</h3>
+		<p class="ulke">${obj.data.country}</p>
+		<p>Enlem: ${obj.data.loc.slice(0, 7)} Boylam: ${obj.data.loc.slice(8)}</p>
+		<p>Şehir: ${obj.data.region}</p>
+		<p>Saat dilimi: ${obj.data.timezone}</p>
+		<p>Para birimi: ${"TL"}</p>
+		<p>ISP: ${obj.data.org}</p>
+	</div>
+	</div>`;
+}
+
+async function getUser2() {
+	try {
+		const response = await axios.get('https://ipinfo.io/81.214.106.54?token=1c9664f8f86f79');
+		console.log(response);
+		const userCard = cardCreater2(response);
+		const card = document.querySelector(".cards");
+		card.insertAdjacentHTML("beforeend", userCard);
+	} catch (error) {
+		console.log(error);
+	}
+}
+
+getUser2()
+
+function errorCreate(obj) {
+	return `<div class="card">
+	<img src=${'https://miro.medium.com/max/1400/1*52_FzWNt0rWi6X-nUF0OBw.webp'} />
+	<div class="card-info">
+		<h3 class="ip">${obj.code}</h3>
+		<p>${obj.message}</p>
+	</div>
+	</div>`;
+}
+
+async function getUser3() {
+	try {
+		const response = await axios.get('https://ipinfo.io/81.214.106.54?token=1c9664f8f86f79abc');
+		const userCard = cardCreater2(response);
+		const card = document.querySelector(".cards");
+		card.insertAdjacentHTML("beforeend", userCard);
+	} catch (error) {
+		console.log(error)
+		const errorMessage = errorCreate(error);
+		const card = document.querySelector(".cards");
+		card.insertAdjacentHTML("beforeend", errorMessage);
+	}
+}
+
+getUser3()
