@@ -122,7 +122,6 @@ function cardCreater2(obj) {
 async function getUser2() {
 	try {
 		const response = await axios.get('https://ipinfo.io/81.214.106.54?token=1c9664f8f86f79');
-		console.log(response);
 		const userCard = cardCreater2(response);
 		const card = document.querySelector(".cards");
 		card.insertAdjacentHTML("beforeend", userCard);
@@ -150,7 +149,6 @@ async function getUser3() {
 		const card = document.querySelector(".cards");
 		card.insertAdjacentHTML("beforeend", userCard);
 	} catch (error) {
-		console.log(error)
 		const errorMessage = errorCreate(error);
 		const card = document.querySelector(".cards");
 		card.insertAdjacentHTML("beforeend", errorMessage);
