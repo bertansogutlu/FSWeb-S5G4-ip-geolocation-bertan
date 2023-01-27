@@ -1,5 +1,5 @@
 //axios import buraya gelecek
-
+import axios from 'axios';
 var benimIP;
 
 
@@ -70,3 +70,36 @@ async function ipAdresimiAl(){
 
 
 //kodlar buraya gelecek
+
+//https://apis.ergineer.com/ipgeoapi/81.214.106.54
+
+function cardCreater(obj) {
+	return `<div class="card">
+	<img src=${obj["ülkebayrağı"]} />
+	<div class="card-info">
+		<h3 class="ip">${obj["sorgu"]}</h3>
+		<p class="ulke">${obj["ülkeKodu"]}</p>
+		<p>Enlem: ${obj["enlem"]} Boylam: ${obj["boylam"]}</p>
+		<p>Şehir: ${obj["bölgeAdı"]}</p>
+		<p>Saat dilimi: ${obj["saatdilimi"]}</p>
+		<p>Para birimi: ${obj["parabirimi"]}</p>
+		<p>ISP: ${obj["isp"]}</p>
+	</div>
+	</div>`;
+	}
+
+async function getUser() {
+	try {
+		const response = await axios.get('https://apis.ergineer.com/ipgeoapi/81.214.106.54');
+		console.log(response);
+		const userCard = cardCreater(response);
+		const card= document.querySelector(".cards");
+		card.insertAdjacentHTML("beforeend", userCard);
+	} catch (error) {
+		console.error(error);
+	}
+  }
+
+  getUser()
+	
+
