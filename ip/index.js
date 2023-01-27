@@ -146,7 +146,7 @@ function errorCreate(obj) {
 
 async function getUser3() {
 	try {
-		const response = await axios.get('yanlisIp');
+		const response = await axios.get('https://ipinfo.io/');
 		const userCard = cardCreater2(response);
 		const card = document.querySelector(".cards");
 		card.insertAdjacentHTML("beforeend", userCard);
