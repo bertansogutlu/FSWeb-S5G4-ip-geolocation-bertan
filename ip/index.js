@@ -78,7 +78,7 @@ function cardCreater(obj) {
 	<img src=${obj.data["ülkebayrağı"]} />
 	<div class="card-info">
 		<h3 class="ip">${obj.data["sorgu"]}</h3>
-		<p class="ulke">${obj.data["ülkeKodu"]}</p>
+		<p class="ulke">${obj.data["ülke"]}(${obj.data["ülkeKodu"]})</p>
 		<p>Enlem: ${obj.data["enlem"]} Boylam: ${obj.data["boylam"]}</p>
 		<p>Şehir: ${obj.data["bölgeAdı"]}</p>
 		<p>Saat dilimi: ${obj.data["saatdilimi"]}</p>
