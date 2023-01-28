@@ -105,7 +105,7 @@ function errorCreater(obj) {
 async function getUser() {
 	try {
 		await ipAdresimiAl();
-		const response = await axios.get('https://apis.ergineer.com/ipgeoapi/'+benimIP);
+		const response = await axios.get('https://apis.ergineer.com/ipgeoapi/' + benimIP);
 		const userCard = cardCreater(response);
 		const card = document.querySelector(".cards");
 		card.insertAdjacentHTML("beforeend", userCard);
@@ -191,20 +191,20 @@ async function getUserDifCatch() {
 
 // getUserDifCatch();
 
+// function start() {
+// 	getUser();
+// 	getUserCatch();
+// 	getUserDif();
+// 	getUserDifCatch();
+// }
 
+// start();
 
-async function start() {
-	try {
-		await getUser();
-		await getUserCatch();
-		await getUserDif();
-		await getUserDifCatch();
-	} catch (error) {
-		console.log(error)
-		const errorMessage = errorCreater(error);
-		const card = document.querySelector(".cards");
-		card.insertAdjacentHTML("beforeend", errorMessage);
-	}
+async function startSync() {
+	await getUser();
+	await getUserCatch();
+	await getUserDif();
+	await getUserDifCatch();
 }
 
-start();
+startSync();
