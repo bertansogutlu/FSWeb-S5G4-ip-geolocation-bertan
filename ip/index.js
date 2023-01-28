@@ -117,7 +117,7 @@ async function getUser() {
 	}
 }
 
-getUser();
+// getUser();
 
 async function getUserCatch() {
 	try {
@@ -135,7 +135,7 @@ async function getUserCatch() {
 	}
 }
 
-getUserCatch();
+// getUserCatch();
 
 
 
@@ -171,7 +171,7 @@ async function getUserDif() {
 	}
 }
 
-getUserDif();
+// getUserDif();
 
 
 async function getUserDifCatch() {
@@ -189,5 +189,22 @@ async function getUserDifCatch() {
 	}
 }
 
-getUserDifCatch();
+// getUserDifCatch();
 
+
+
+async function start() {
+	try {
+		await getUser();
+		await getUserCatch();
+		await getUserDif();
+		await getUserDifCatch();
+	} catch (error) {
+		console.log(error)
+		const errorMessage = errorCreater(error);
+		const card = document.querySelector(".cards");
+		card.insertAdjacentHTML("beforeend", errorMessage);
+	}
+}
+
+start();
